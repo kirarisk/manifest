@@ -19,6 +19,8 @@ use program::{
     global_clean::process_global_clean, global_create::process_global_create,
     global_deposit::process_global_deposit, global_evict::process_global_evict,
     global_withdraw::process_global_withdraw, process_swap, withdraw::process_withdraw,
+    delegate_market::process_delegate_market,
+    commit_market::process_commit_market,
     ManifestInstruction,
 };
 use solana_program::{
@@ -28,6 +30,8 @@ use solana_program::{
 
 #[cfg(not(feature = "no-entrypoint"))]
 use solana_security_txt::security_txt;
+
+use crate::program::commit_and_undelegate_market::process_commit_and_undelegate_market;
 
 #[cfg(not(feature = "no-entrypoint"))]
 security_txt! {
@@ -87,7 +91,7 @@ security_txt! {
 // transaction limit before an attacker is able to clear a substantial number of
 // seats in one transaction.
 
-declare_id!("MNFSTqtC93rEfYHB6hF82sKdZpUDFWkViLByLd1k1Ms");
+declare_id!("FASTz9tarYt7xR67mA2zDtr15iQqjsDoU4FxyUrZG8vb");
 
 #[cfg(not(feature = "no-entrypoint"))]
 solana_program::entrypoint!(process_instruction);
@@ -148,6 +152,15 @@ pub fn process_instruction(
         }
         ManifestInstruction::GlobalClean => {
             process_global_clean(program_id, accounts, data)?;
+        }
+        ManifestInstruction::DelegateMarket => {
+            process_delegate_market(program_id,accounts,data)?;
+        }
+        ManifestInstruction::CommitMarket => {
+            process_commit_market(program_id,accounts,data)?;
+        }
+        ManifestInstruction::CommitAndUndelgate => {
+            process_commit_and_undelegate_market(program_id, accounts, data)?;
         }
     }
 
