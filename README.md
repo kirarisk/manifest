@@ -2,10 +2,6 @@
 
 *Sub-50ms Orderbook Performance Challenging CEX Speed*
 
-[![codecov](https://codecov.io/gh/CKS-Systems/manifest/graph/badge.svg?token=PJ3Y2BVMM8)](https://codecov.io/gh/CKS-Systems/manifest)
-[![Code Review - Rust](https://github.com/CKS-Systems/manifest/actions/workflows/ci-code-review-rust.yml/badge.svg)](https://github.com/CKS-Systems/manifest/actions/workflows/ci-code-review-rust.yml)
-[![Code Review - Typescript](https://github.com/CKS-Systems/manifest/actions/workflows/ci-code-review-ts.yml/badge.svg)](https://github.com/CKS-Systems/manifest/actions/workflows/ci-code-review-ts.yml)
-
 A high-performance Central Limit Order Book (CLOB) prototype forked from [Manifest](https://github.com/CKS-Systems/manifest) and deployed on [MagicBlock's ephemeral rollups](https://magicblock.xyz/), achieving sub-50ms latency that rivals centralized exchange performance.
 
 **Developed by [@kira_risk](https://twitter.com/kira_risk)**
